@@ -19,18 +19,13 @@ Route::get('/', function () {
 
 
 // works
-Route::name('writings.')
-    ->namespace('writings')
-    ->prefix('writings')
+Route::name('articles.')
+    ->prefix('articles')
+    ->namespace('App\Http\Controllers\Articles')
     ->group(function () {
-
-        Route::name('articles.')
-            ->prefix('articles')
-            ->group(function () {
-                Route::get('/', 'ArticleController@index')->name('index');
-                Route::get('/create', 'ArticleController@create')->name('create');
-                Route::post('/', 'ArticleController@store')->name('store');
-                Route::get('/{articleId}/edit', 'ArticleController@edit')->name('edit');
-                Route::put('/{articleId}', 'ArticleController@update')->name('update');
-            });
+        Route::get('/', 'ArticlesController@index')->name('index');
+        Route::get('/create', 'ArticlesController@create')->name('create');
+        Route::post('/', 'ArticlesController@store')->name('store');
+        Route::get('/{articleId}/edit', 'ArticlesController@edit')->name('edit');
+        Route::put('/{articleId}', 'ArticlesController@update')->name('update');
     });
